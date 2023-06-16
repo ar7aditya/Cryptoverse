@@ -12,7 +12,7 @@ const { Panel } = Collapse;
 const Exchanges = () => {
   const { data, isFetching } = useGetExchangesQuery();
   const exchangesList = data?.data?.exchanges;
- // Note: To access this endpoint you need premium plan
+  console.log(exchangesList);
   if (isFetching) return <Loader />;
 
   return (
@@ -24,7 +24,7 @@ const Exchanges = () => {
         <Col span={6}>Change</Col>
       </Row>
       <Row>
-        {/* {exchangesList.map((exchange) => (
+        {exchangesList.map((exchange) => (
           <Col span={24}>
             <Collapse>
               <Panel
@@ -34,7 +34,7 @@ const Exchanges = () => {
                   <Row key={exchange.uuid}>
                     <Col span={6}>
                       <Text><strong>{exchange.rank}.</strong></Text>
-                      <Avatar className="exchange-image" src={exchange.iconUrl} />
+                      <Avatar className="exchange-image" src={exchange.iconUrl} alt='img'/>
                       <Text><strong>{exchange.name}</strong></Text>
                     </Col>
                     <Col span={6}>${millify(exchange.volume)}</Col>
@@ -43,11 +43,11 @@ const Exchanges = () => {
                   </Row>
                   )}
               >
-                {HTMLReactParser(exchange.description || '')}
+                {/* {HTMLReactParser(exchange.description || '')} */}
               </Panel>
             </Collapse>
           </Col>
-        ))} */}
+        ))}
       </Row>
     </>
   );
